@@ -1,198 +1,86 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>강서 클럽 룩북 정보 | 강서 클럽</title>
-    <meta name="description" content="강서 클럽 룩북 서비스에 대한 상세 정보. Street Brutalist 감성의 강서 클럽 데이터 기반 큐레이션 시스템, 전문가 매칭, 방문 일정 안내. 예약 문의 010-6279-0862.">
-    <meta name="keywords" content="강서 클럽, 강서 클럽 룩북, 강서 클럽 룩북 정보, 강서 클럽 룩북 서비스, 강서 클럽 룩북 큐레이션, 강서 클럽 룩북 예약, 강서 클럽 데이터, 강서 클럽 전문가">
-    <link rel="canonical" href="https://t3b06-gs-club-look.vercel.app/info">
-    <meta property="og:title" content="강서 클럽 룩북 정보 | 강서 클럽">
-    <meta property="og:description" content="강서 클럽 룩북 서비스 상세 안내. 데이터 기반 트렌드 분석과 전문 큐레이션 시스템. Street Brutalist 감성의 강서 클럽.">
-    <meta property="og:url" content="https://t3b06-gs-club-look.vercel.app/info">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://t3b06-gs-club-look.vercel.app/og-image.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="강서 클럽 룩북 정보 | 강서 클럽">
-    <meta name="twitter:description" content="강서 클럽 룩북 서비스 상세 안내. 데이터 기반 트렌드 분석과 전문 큐레이션.">
-    <meta name="twitter:image" content="https://t3b06-gs-club-look.vercel.app/og-image.jpg">
-
-    <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'Noto Sans KR', 'Malgun Gothic', sans-serif; background-color: #0a0a0a; color: #e0e0e0; line-height: 1.8; min-height: 100vh; }
-        :root {
-            --neon-cyan: #00f0ff;
-            --neon-pink: #ff2d78;
-            --neon-purple: #7b2d8e;
-            --void-black: #0a0a0a;
-            --dark-gray: #1a1a1a;
-            --medium-gray: #2a2a2a;
-            --text-light: #e0e0e0;
-            --text-muted: #888;
-            --accent-border: #333;
-            --glow-cyan: 0 0 10px rgba(0,240,255,0.3);
-            --glow-pink: 0 0 10px rgba(255,45,120,0.3);
-        }
-        h1, h2, h3, h4, h5, h6 { font-weight: 700; letter-spacing: 0.02em; }
-        h1 { font-size: 2.8rem; margin-bottom: 1.5rem; color: var(--neon-cyan); text-shadow: var(--glow-cyan); }
-        h2 { font-size: 2rem; margin-bottom: 1.2rem; color: var(--neon-pink); text-shadow: var(--glow-pink); }
-        p { margin-bottom: 1.2rem; font-size: 1rem; color: var(--text-light); }
-        a { color: var(--neon-cyan); text-decoration: none; transition: color 0.3s, text-shadow 0.3s; }
-        a:hover { color: #fff; text-shadow: 0 0 8px var(--neon-cyan); }
-        .btn { display: inline-block; padding: 0.8rem 2rem; border: 1px solid var(--neon-cyan); background: transparent; color: var(--neon-cyan); text-transform: uppercase; font-weight: 700; letter-spacing: 0.1em; cursor: pointer; transition: all 0.3s; }
-        .btn:hover { background: var(--neon-cyan); color: var(--void-black); box-shadow: var(--glow-cyan); }
-        .container { max-width: 1200px; margin: 0 auto; padding: 0 2rem; }
-        section { padding: 4rem 0; border-bottom: 1px solid var(--accent-border); }
-        header { background: var(--void-black); border-bottom: 1px solid var(--accent-border); padding: 1rem 0; position: sticky; top: 0; z-index: 100; }
-        .logo { font-size: 1.5rem; font-weight: 700; color: var(--neon-cyan); }
-        .logo span { color: var(--neon-pink); }
-
-        /* 네비게이션 */
-        nav { display: flex; gap: 2rem; align-items: center; }
-        nav a { color: var(--text-muted); text-transform: uppercase; font-size: 0.85rem; letter-spacing: 0.1em; }
-        nav a:hover { color: var(--neon-cyan); }
-        .hamburger-menu { display: none; flex-direction: column; cursor: pointer; gap: 5px; }
-        .hamburger-menu span { width: 25px; height: 2px; background: var(--text-light); transition: 0.3s; }
-
-        /* 헤더 레이아웃 */
-        .header-inner { display: flex; justify-content: space-between; align-items: center; }
-
-        /* 정보 전용 섹션 */
-        .info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 3rem 0; }
-        .info-card { border: 1px solid var(--accent-border); padding: 2rem; background: var(--dark-gray); transition: border-color 0.3s; }
-        .info-card:hover { border-color: var(--neon-cyan); }
-        .info-card h3 { color: var(--neon-pink); margin-bottom: 1rem; font-size: 1.3rem; }
-        .info-card .stat { font-size: 2rem; color: var(--neon-cyan); font-weight: 700; }
-        .data-highlight { background: var(--medium-gray); padding: 1.5rem; border-left: 3px solid var(--neon-cyan); margin: 2rem 0; }
-        .data-highlight p { margin-bottom: 0.5rem; }
-        .faq-item { border-bottom: 1px solid var(--accent-border); padding: 1.5rem 0; }
-        .faq-item h4 { color: var(--neon-cyan); cursor: pointer; }
-        .faq-item p { margin-top: 0.8rem; color: var(--text-muted); }
-
-        @media (max-width: 768px) {
-            h1 { font-size: 2rem; }
-            h2 { font-size: 1.5rem; }
-            .info-grid { grid-template-columns: 1fr; }
-            nav { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; width: 100%; background: var(--void-black); border-bottom: 1px solid var(--accent-border); }
-            nav.active { display: flex; }
-            .hamburger-menu { display: flex; }
-            .header-inner { position: relative; }
-        }
-
-        .tel-link { color: var(--neon-pink); font-weight: 700; }
-        .tel-link:hover { text-shadow: 0 0 10px var(--neon-pink); }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <meta name="bpaas-design-system" content="brutalist-avantgarde">
+  <meta name="bpaas-design-theme" content="kr-acid-yellow">
+  <title>강서 클럽 룩북 – 상세 정보</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="canonical" href="https://gangseo-review-trend.mapo-room-guide.xyz/about.html">
+  <meta property="og:url" content="https://gangseo-review-trend.mapo-room-guide.xyz/about.html">
 </head>
 <body>
-    <header>
-        <div class="container header-inner">
-            <div class="logo">강서<span>클럽</span></div>
-            <nav>
-                <a href="/">홈</a>
-                <a href="/lookbook">룩북</a>
-                <a href="/info">정보</a>
-                <a href="/contact">문의</a>
-                <a href="tel:01062790862" class="tel-link">010-6279-0862</a>
-            </nav>
-            <div class="hamburger-menu" onclick="this.classList.toggle('active'); document.querySelector('nav').classList.toggle('active');">
-                <span></span><span></span><span></span>
-            </div>
-        </div>
-    </header>
+  <nav class="global-nav">
+    <ul class="nav-list">
+      <li class="nav-item"><a href="/index.html">홈</a></li>
+      <li class="nav-item"><a href="/about.html">소개</a></li>
+      <li class="nav-item"><a href="/clubs.html">클럽</a></li>
+      <li class="nav-item"><a href="/lookbook.html">룩북</a></li>
+      <li class="nav-item"><a href="/contact.html">연락처</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <!-- 히어로 섹션 -->
-        <section>
-            <div class="container">
-                <h1>강서 클럽 룩북 정보</h1>
-                <p>Street Brutalist 감성의 데이터 기반 큐레이션 시스템에 대한 상세 안내입니다. 강서 지역 클럽 문화의 정수를 분석하여 개인화된 룩북을 제공합니다.</p>
-                <a href="tel:01062790862" class="btn">전문가 상담</a>
-            </div>
-        </section>
+  <main class="content">
+    <section class="intro-section">
+      <h1 class="page-title">강서 클럽 룩북 – 상세 정보</h1>
+      <p>강서구에 위치한 특별한 클럽은 도시의 역동적인 밤문화를 대표하는 공간으로, 최신 사운드 시스템과 맞춤형 조명을 갖추고 있습니다. 이곳은 주중에도 다양한 테마 파티와 특별 이벤트가 진행되어, 방문객에게 끊임없는 신선함을 제공합니다.</p>
+      <p>클럽 내부는 스트리트 브루탈리스트 디자인을 적용해 산업적 분위기와 현대적 감각을 조화시켰으며, 방문객이 자유롭게 움직일 수 있는 넓은 플로어와 프라이빗 라운지 구역을 별도로 구분해 편안함을 극대화했습니다.</p>
+    </section>
 
-        <!-- 서비스 개요 -->
-        <section>
-            <div class="container">
-                <h2>서비스 개요</h2>
-                <p>강서 클럽 룩북은 2023년부터 2025년 상반기까지의 강서 지역 클럽 출입 데이터와 패션 트렌드를 머신러닝으로 분석한 결과를 바탕으로 운영됩니다. 총 12,847건의 의상 데이터, 2,391회의 클럽 방문 데이터가 모델에 반영되었습니다.</p>
-                <div class="data-highlight">
-                    <p><strong>데이터 수집 기간:</strong> 2023.01 – 2025.06</p>
-                    <p><strong>분석된 의상 수:</strong> 12,847건</p>
-                    <p><strong>트렌드 정확도:</strong> 91.3% (자체 테스트 기준)</p>
-                    <p><strong>큐레이션 만족도:</strong> 4.7 / 5.0</p>
-                </div>
-                <p>매주 업데이트되는 트렌드 인사이트와 전문 큐레이터의 피드백이 결합된 하이브리드 시스템으로, 단순한 데이터 제공을 넘어 실전에서 검증된 스타일을 제안합니다.</p>
-            </div>
-        </section>
+    <section class="venue-section">
+      <h2 class="section-title">시설 및 공간 구성</h2>
+      <p>메인 플로어는 800제곱미터 규모로, 대형 LED 스크린과 고출력 스피커가 설치돼 대규모 인원도 원활히 수용할 수 있습니다. 별도 VIP 라운지는 고급 인테리어와 전용 바 서비스를 제공해, 특별한 순간을 원하는 고객에게 최적화된 환경을 제공합니다.</p>
+      <p>클럽은 최신 환기 설비와 음향 차단벽을 갖추어 소음 관리에 신경을 썼으며, 실내온도와 습도 조절 시스템을 통해 언제나 쾌적한 분위기를 유지합니다. 또한, 무장애 접근성을 고려한 입구와 화장실 설계로 모든 이용자가 편리하게 이용할 수 있습니다.</p>
+    </section>
 
-        <!-- 상세 정보 그리드 -->
-        <section>
-            <div class="container">
-                <h2>핵심 구성 요소</h2>
-                <div class="info-grid">
-                    <div class="info-card">
-                        <h3>데이터 엔진</h3>
-                        <p class="stat">12,847</p>
-                        <p>강서 지역 5개 주요 클럽에서 수집된 의상 데이터를 딥러닝 모델로 분석. 아이템별 조합 빈도, 색상 팔레트, 실루엣 트렌드를 정량화하여 제공합니다.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>전문 큐레이터</h3>
-                        <p class="stat">7명</p>
-                        <p>패션 업계 10년 이상 경력의 큐레이터 7명이 데이터 분석 결과를 해석하고, 개인 체형과 선호도를 반영한 최종 룩북을 구성합니다.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>지역 특화</h3>
-                        <p class="stat">100%</p>
-                        <p>강서 클럽의 고유한 스트릿 브루탈리스트 감성에 최적화. 홍대/강남과 차별화된 로컬 트렌드를 반영한 큐레이션을 제공합니다.</p>
-                    </div>
-                    <div class="info-card">
-                        <h3>방문 일정</h3>
-                        <p class="stat">주 6일</p>
-                        <p>월~토요일 오후 2시~9시까지 강서 클럽 내 전용 부스에서 1:1 상담 가능. 예약 필수 (최소 2일 전).</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="service-section">
+      <h2 class="section-title">주요 서비스 및 프로그램</h2>
+      <p>주간에는 라이브 DJ 공연과 댄스 워크숍이, 야간에는 세계적인 DJ와 아티스트의 특급 파티가 진행됩니다. 매주 금요일과 토요일은 ‘테마 나이트’를 테마로 다양한 음악 장르와 시각 연출을 선보이며, 고객은 사전 예약을 통해 테마에 맞는 특전 혜택을 받을 수 있습니다.</p>
+      <p>또한, 클럽 내 레스토랑에서는 고품질 칵테일과 퓨전 요리를 제공하며, 전용 포토존에서는 전문 사진작가가 촬영한 순간을 즉시 SNS에 공유할 수 있는 프린트 서비스를 제공합니다.</p>
+    </section>
 
-        <!-- 프로세스 -->
-        <section>
-            <div class="container">
-                <h2>룩북 제작 프로세스</h2>
-                <div style="display: flex; flex-wrap: wrap; gap: 2rem; justify-content: center; margin: 2rem 0;">
-                    <div style="flex: 1; min-width: 200px; text-align: center; padding: 1.5rem; border: 1px solid var(--accent-border);">
-                        <p style="font-size: 2rem; color: var(--neon-cyan);">01</p>
-                        <h3 style="color: var(--neon-pink);">데이터 수집</h3>
-                        <p>클럽 내 착장 관측 + SNS 태그 데이터 크롤링</p>
-                    </div>
-                    <div style="flex: 1; min-width: 200px; text-align: center; padding: 1.5rem; border: 1px solid var(--accent-border);">
-                        <p style="font-size: 2rem; color: var(--neon-cyan);">02</p>
-                        <h3 style="color: var(--neon-pink);">AI 분석</h3>
-                        <p>패턴 인식 + 트렌드 예측 모델링 (정확도 91%)</p>
-                    </div>
-                    <div style="flex: 1; min-width: 200px; text-align: center; padding: 1.5rem; border: 1px solid var(--accent-border);">
-                        <p style="font-size: 2rem; color: var(--neon-cyan);">03</p>
-                        <h3 style="color: var(--neon-pink);">큐레이터 리뷰</h3>
-                        <p>개인 취향/체형 반영 최종 선별</p>
-                    </div>
-                    <div style="flex: 1; min-width: 200px; text-align: center; padding: 1.5rem; border: 1px solid var(--accent-border);">
-                        <p style="font-size: 2rem; color: var(--neon-cyan);">04</p>
-                        <h3 style="color: var(--neon-pink);">룩북 전달</h3>
-                        <p>PDF + 모바일 뷰어 + 대여 아이템 태그</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <section class="booking-section">
+      <h2 class="section-title">예약 및 이용 안내</h2>
+      <p>입장은 사전 온라인 예약을 권장합니다. 공식 웹사이트와 모바일 앱을 통해 원하는 날짜와 인원을 선택하면 실시간 좌석 현황을 확인할 수 있으며, 조기 예약 시 할인 쿠폰을 발급받을 수 있습니다.</p>
+      <p>예약 시 제공되는 기본 정보에는 이용 인원, 예상 도착 시간, 선호하는 음악 장르, 그리고 특별 요청 사항(예: 케이크 주문, 프라이빗 파티룸 이용 등)이 포함됩니다. 모든 예약은 현장 결제와 온라인 결제 두 가지 옵션을 지원합니다.</p>
+    </section>
 
-        <!-- FAQ -->
-        <section>
-            <div class="container">
-                <h2>자주 묻는 질문</h2>
-                <div class="faq-item">
-                    <h4>Q. 데이터는 어떻게 수집되나요?</h4>
-                    <p>강서 지역 5개 클럽의 협조를 받아 출입객 의상을 비식별화된 이미지로 수집합니다. 개인 식별 정보는 일체 저장하지 않으며, 통계적 패턴만 분석에 사용됩니다.</p>
-                </div>
-                <div class="faq-item">
-                    <h4>Q. 큐레이션 비용은 얼마인가요?</h4>
-                    <p>기본 룩북 (1회) 35,000원 / 프리미엄 큐레이션 (월 2회 업데이트) 89,000원입니다. 첫
+    <section class="safety-section">
+      <h2 class="section-title">안전 및 운영 정책</h2>
+      <p>클럽은 방문객의 안전을 최우선으로 하며, 입구에 체온 확인 및 손소독 스테이션을 마련했습니다. 또한, 전용 보안팀이 24시간 순찰하며, 이상 상황 발생 시 즉시 대응 프로토콜을 실행합니다.</p>
+      <p>음주 직후 운전은 엄격히 금지하고, 대중교통 및 택시 호출 서비스를 안내하여 안전한 귀가를 지원합니다. 모든 행사에서는 최소 인원 제한을 두어 사회적 거리두기를 유지하고, 실시간 인원 모니터링 시스템으로 혼잡도를 관리합니다.</p>
+    </section>
+
+    <section class="faq-section">
+      <h2 class="section-title">자주 묻는 질문</h2>
+      <div class="faq-card">
+        <h3 class="faq-question">Q. 입장 연령 제한이 있나요?</h3>
+        <p class="faq-answer">모든 손님은 만 19세 이상이어야 하며, 신분증 확인이 필수입니다. 미성년자는 입장이 제한됩니다.</p>
+      </div>
+      <div class="faq-card">
+        <h3 class="faq-question">Q. 드레스 코드가 있나요?</h3>
+        <p class="faq-answer">스마트 캐주얼을 권장합니다. 지나치게 노출이 많은 복장은 입장이 제한될 수 있습니다.</p>
+      </div>
+      <div class="faq-card">
+        <h3 class="faq-question">Q. 파티룸 예약은 어떻게 하나요?</h3>
+        <p class="faq-answer">파티룸은 온라인 예약 페이지에서 별도 신청이 가능하며, 최소 4시간 전까지 결제가 완료되어야 확정됩니다.</p>
+      </div>
+      <div class="faq-card">
+        <h3 class="faq-question">Q. 주차 시설은 제공되나요?</h3>
+        <p class="faq-answer">클럽 인근에 공용 주차장이 있으며, 30분당 2,000원의 요금이 부과됩니다. 주차장 이용 시 QR 코드를 스캔해 입출입을 관리합니다.</p>
+      </div>
+    </section>
+
+    <section class="meta-section">
+      <h2 class="section-title">메타 정보</h2>
+      <p>작성일: 2026-07-28 | 작성자: 강서 클럽 운영팀</p>
+      <p>키워드: 강서 클럽, 클럽 룩북, 강서 클럽 정보, 강서 나이트라이프, 강서 파티 장소</p>
+    </section>
+  </main>
+
+  <footer class="global-footer">
+    <p>© 2026 강서 클럽. All rights reserved.</p>
+  </footer>
 </body>
 </html>
